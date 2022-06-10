@@ -3844,7 +3844,7 @@ permissions, and so on. Therefore, the Knora base ontology describes structured 
 metadata. In the diagram below, a book (<code>ex:book2</code>) has a title
 (identified by the predicate <code>ex:title</code>) and a publication date
 (<code>ex:pubdate</code>), each of which has some metadata.</p>
-<p><img alt="Figure 1" src="knora-base-fig1.dot.png" title="Figure 1" /></p>
+<p><img alt="Figure 1" src="../knora-base-fig1.dot.png" title="Figure 1" /></p>
 <h3 id="projects">Projects</h3>
 <p>In Knora, each item of data belongs to some particular project. Each project using Knora must define a
 <code>kb:knoraProject</code>, which has these properties (cardinalities are indicated in parentheses after each property name):</p>
@@ -4373,7 +4373,7 @@ data:value_D rdf:type kb:LinkValue ;
 </code></pre>
 <p>This creates a link (<code>paintings:isInCollection</code>) between the painting and the collection, along with a reification
 containing metadata about the link. We can visualise the result as the following graph:</p>
-<p><img alt="Figure 2" src="knora-base-fig2.dot.png" title="Figure 2" /></p>
+<p><img alt="Figure 2" src="../knora-base-fig2.dot.png" title="Figure 2" /></p>
 <p>Knora allows a user to see a link if the requesting user has permission to see the source and target resources as well
 as the <code>kb:LinkValue</code>.</p>
 <h3 id="part-of-part-whole-relation-between-resources">Part-of (part-whole) relation between resources</h3>
@@ -4505,7 +4505,7 @@ data:LV1 rdf:type kb:LinkValue ;
     kb:valueHasRefCount 1 .
 </code></pre>
 <p>The result can be visualized like this:</p>
-<p><img alt="Figure 3" src="knora-base-fig3.dot.png" title="Figure 3" /></p>
+<p><img alt="Figure 3" src="../knora-base-fig3.dot.png" title="Figure 3" /></p>
 <p>Link values created automatically for resource references in standoff are visible to all users, and the creator of these
 link values is always
 <code>kb:SystemUser</code> (see <a href="#users-and-groups">Users and Groups</a>). The DSP-API server allows a user to see a standoff link if
