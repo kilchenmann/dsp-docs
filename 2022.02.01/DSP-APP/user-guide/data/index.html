@@ -3462,25 +3462,22 @@ It's possible to collect different sources and to store them in an individual co
 <h3 id="full-text-search">Full text search</h3>
 <p>Full text search performs queries including one or more terms or phrases, and returns data that matches search conditions. By default, the search is performed in all projects stored in DSP. However, it is possible to filter by project using the menu "Filter by project" on the left side of the search bar.</p>
 <p><img alt="Filter your full text search by specific project" src="../../assets/images/search-fulltext-filterByProject.png" /><em><a href="https://admin.dasch.swiss">https://admin.dasch.swiss</a> - Search 1: Full text search</em></p>
-<p>When clicking on the search bar, the search history panel is displayed. The <strong>10</strong> last searches are registered. It is also possible to clear the search history list (<em>Clear list</em> button at the bottom of the panel or the <em>x</em> at the end of each line).</p>
+<p>When clicking on the search bar, the search history panel is displayed. The <strong>10</strong> last searches are registered. It is also possible to clear the search history list (<em>Clear list</em> button at the bottom of the panel).</p>
 <p><img alt="Search history panel" src="../../assets/images/search-history.png" /><em>Search history list is accessible for the full text search from any webpage.</em></p>
 <p>Special syntax:</p>
 <ul>
-<li>question mark? can be used as wildcard symbol for a single character.</li>
-<li>asterisk* can be used as a wildcard symbol for zero, one or multiple characters.</li>
-<li>"quotation marks" searches for the whole pattern.</li>
+<li>asterisk* can be used as a wildcard symbol</li>
+<li>"quotation marks" searches for the whole pattern </li>
 </ul>
 <hr />
 <h3 id="advanced-search">Advanced search</h3>
 <p><img alt="Advanced search link is findable in the search menu at the right of the full text search field." src="../../assets/images/search-advanced-link.png" /></p>
 <p>The advanced search allows for the creation of complex queries using a graphical widget.
 The widget's contents are then turned into a string representing a Gravsearch (SPARQL) query to be sent to DSP-API.</p>
-<p>A query consists of the following elements:</p>
-<ul>
-<li>data model selection</li>
-<li>selection of a resource class belonging to the selected data model (optional)</li>
-<li>specification of properties, comparison operators, and values (optional).</li>
-</ul>
+<p>A query consists of the following elements:
+- data model selection
+- selection of a resource class belonging to the selected data model (optional)
+- specification of properties, comparison operators, and values (optional).</p>
 <p>Although selection of a resource or a property or both are optional, either a resource class has to be selected or at least one property has to be specified,
 otherwise the query is not considered valid and cannot be submitted.</p>
 <p><img alt="Search 2: Advanced search offers many filter combinations and is a powerful search tool." src="../../assets/images/search-advanced.png" /><em><a href="https://admin.dasch.swiss/search/advanced">https://admin.dasch.swiss/search/advanced</a> - Search 2: Advanced search offers many filter combinations and is a powerful search tool.</em></p>
@@ -3515,11 +3512,9 @@ This search finds "Jacob" as well as "Jakob".</p>
 <p><img alt="Advanced search panel with a search example" src="../../assets/images/advanced-search-match.png" /></p>
 <h5 id="specifying-a-linked-resource-matches">Specifying a Linked Resource (matches)</h5>
 <p>Used with a linking property, the <code>matches</code> operator lets the user search for a linked resource that matches the specified properties.
-In this example, the user writes a query looking for all letters that have an author that:</p>
-<ol>
-<li>was born after January 1st 1650</li>
-<li>whose family name is "Bernoulli"</li>
-</ol>
+In this example, the user writes a query looking for all letters that have an author that:
+1. was born after January 1st 1650
+2. whose family name is "Bernoulli"</p>
 <p>This is different from the "is equal to" operator that lets the user specify a certain person (selected from a list).</p>
 <p><img alt="Advanced search panel with a search example" src="../../assets/images/advanced-search-linked-resource.png" /></p>
 <hr />
@@ -3551,8 +3546,7 @@ Each column of the table corresponds to one metadata.</p>
 <h2 id="do-research-and-work-on-your-data">Do research and work on your data</h2>
 <p>Once you have found the desired sources, you can (re)view them and annotate the source itself, the media file, or single metadata values. If you select more than one source, you can compare them in a side-by-side view, link them, edit them all at once, or save them in a collection. A collection is similar to a playlist in a music app or shopping basket in an online store.</p>
 <h3 id="display-a-source">Display a source</h3>
-<!-- &#9888; *WORK IN PROGRESS* -->
-
+<p>&#9888; <em>WORK IN PROGRESS</em></p>
 <p>The DSP-APP offers different source views for different media types. There's a viewer for still images, moving images, audio and document files. You can open them from the list of search results. Depending on the media type, DSP-APP offers different tools to work on the source.</p>
 <p>In a still image source, you're able to draw regions on the image and to annotate or transcribe this region. Usually, a still image source is used for book pages, photographs, postcards, letters etc.</p>
 <p>In time-based sources like moving image or audio document, you can mark sequences on the timeline. A transcription tool helps to annotate and to transcribe the sequence.</p>
@@ -3563,21 +3557,18 @@ Each column of the table corresponds to one metadata.</p>
 <p><img alt="Single source fullframe view with the transcription tool at the bottom. The source type in this example is &quot;Video&quot; with a table-based sequence protocol on the right hand-side." src="../../assets/images/source-selected-fullframe.png" /><em>Single source fullframe view with the transcription tool at the bottom. The source type in this example is "Video" with a table-based sequence protocol on the right hand-side.</em></p>
 <hr />
 <h3 id="select-more-than-one-source">Select more than one source</h3>
-<!-- &#9888; *NOT YET IMPLEMENTED* -->
-
+<p>&#9888; <em>NOT YET IMPLEMENTED</em></p>
 <p><img alt="Three sources selected; what do you want to do with them?" src="../../assets/images/source-selected-three.png" /><em>Three sources are selected; what do you want to do with them?</em></p>
-<p>By selecting more than one source, you will be able to edit them all at once, add them to a collection, share or connect them.
+<p>By selecting more than one source, you will be able to edit them all at once, add them to a collection, share or connect them. 
 Or you could compare the sources (see <a href="/user-guide/data/#compare-the-sources">Compare the sources</a>).</p>
 <hr />
 <h3 id="compare-the-sources">Compare the sources</h3>
-<!-- &#9888; *NOT YET IMPLEMENTED* -->
-
+<p>&#9888; <em>NOT YET IMPLEMENTED</em></p>
 <p>You will be able to compare from two to six source objects at the same time side by side.</p>
 <p><img alt="Compare 2 to 6 sources with each other, similar to the Mirador web app." src="../../assets/images/source-compare-viewer.png" /><em>Compare 2 to 6 sources with each other, similar to the Mirador web app.</em></p>
 <hr />
 <h3 id="annotate-and-connect-your-data-sources-andor-metadata">Annotate and connect your data (sources and/or metadata)</h3>
-<!-- &#9888; *NOT YET IMPLEMENTED* -->
-
+<p>&#9888; <em>NOT YET IMPLEMENTED</em></p>
 <p>A main feature of the flexible data storage that DSP-APP uses is the possibility to annotate and link sources and their metadata. An annotation can be a small note about a date like "Not sure about the birthdate of this person. There's another date mentioned in the source XYZ". Inside the note, it will be possible to link to another source.</p>
 <p>Links in DSP-APP are always bi-directional. If you link source A with source B, then source B knows about this connection. If you find source B, you have the connection to source A as well.</p>
 <hr />
