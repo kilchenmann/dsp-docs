@@ -3634,10 +3634,8 @@ cardinality greater than 1 has to be used.</p>
 }
 </code></pre>
 <h4 id="lists-from-excel">Lists from Excel</h4>
-<p>A list can be directly imported from one or several Excel files. The Excel sheet must have the following format:</p>
-<p><img alt="img-list-example.png" src="../assets/images/img-list-example.png" /></p>
-<p>If there are several languages, a separate Excel file for each language has to be provided. The folder with the Excel
-file(s) can be directly referenced inside the list definition by defining it as new list node:</p>
+<p>A list can be directly imported from one or several Excel files. The folder with the Excel file(s) can then directly 
+be referenced inside the list definition by defining it as new list node:</p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;List-from-excel&quot;,
   &quot;labels&quot;: {
@@ -3653,12 +3651,12 @@ file(s) can be directly referenced inside the list definition by defining it as 
   }
 }
 </code></pre>
-<p>The nodes section must contain the field:</p>
+<p>The <code>nodes</code> section has to contain the field:</p>
 <ul>
-<li><em>folder</em>: Path to the folder where the Excel files are stored</li>
+<li><em>folder</em>: Path to the folder containing the Excel files</li>
 </ul>
-<p>Further details to this functionality can be found
-<a href="dsp-tools-excel#create-a-list-from-one-or-several-excel-files">here</a>.</p>
+<p>Further information about the expected format of the Excel lists and details to this functionality can be found
+<a href="../dsp-tools-excel/#create-a-list-from-one-or-several-excel-files">here</a>.</p>
 <p>The <code>lists</code> element is optional. If not used, it should be omitted.</p>
 <h3 id="groups">Groups</h3>
 <p>(optional)</p>

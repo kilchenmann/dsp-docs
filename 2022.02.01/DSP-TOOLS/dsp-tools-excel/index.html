@@ -3167,81 +3167,87 @@
 
 <p><a href="https://badge.fury.io/py/dsp-tools"><img alt="PyPI version" src="https://badge.fury.io/py/dsp-tools.svg" /></a></p>
 <h1 id="excel-files-for-data-modelling-and-data-import">Excel files for data modelling and data import</h1>
-<p>dsp-tools is able to process Excel files and output the appropriate JSON or XML file. The JSON/XML file can then be used
-to create the ontology on the DSP server or import data to the DSP repository. dsp-tools can also be used to create a
-list from an Excel file.</p>
+<p>dsp-tools is able to process Excel files and output the appropriate JSON or XML file. The JSON/XML file can then be
+used to create the ontology on the DSP server or import data to the DSP repository. dsp-tools can also be used to 
+create a list from an Excel file.</p>
 <h2 id="create-the-resources-for-a-data-model-from-an-excel-file">Create the resources for a data model from an Excel file</h2>
-<p>With dsp-tools the <code>resources</code> section used in a data model (JSON) can be created from an Excel file. Only <code>XLSX</code> files
-are allowed. The <code>resources</code> section can be inserted into the ontology file and then be uploaded onto a DSP server.</p>
-<p><strong>An Excel file template can be found <a href="../assets/templates/resources_template.xlsx">here</a>. It is recommended to work from the template.</strong></p>
+<p>With dsp-tools, the <code>resources</code> section used in a data model (JSON) can be created from an Excel file. Only <code>XLSX</code> 
+files are allowed. The <code>resources</code> section can be inserted into the ontology file and then be uploaded onto a DSP 
+server.</p>
+<p><strong>An Excel file template can be found <a href="../assets/templates/resources_template.xlsx">here</a>. It is recommended to work from 
+the template.</strong></p>
 <p>The expected worksheets of the Excel file are:</p>
 <ul>
 <li><code>classes</code>: a table with all resource classes intended to be used in the resulting JSON</li>
 <li><code>class1</code>, <code>class2</code>,...: a table for each resource class named after its name</li>
 </ul>
-<p>The Excel sheet must have the following format.</p>
-<p>The worksheet called <code>classes</code> has the following form: 
+<p>The Excel sheet must have the following structure.</p>
+<p>The worksheet called <code>classes</code> has the following structure: 
 <img alt="img-resources-example-1.png" src="../assets/images/img-resources-example-1.png" /></p>
 <p>The expected columns are:</p>
 <ul>
 <li><code>name</code> : The name of the resource</li>
-<li><code>super</code> : The base resource of the resource</li>
 <li><code>en</code>, <code>de</code>, <code>fr</code>, <code>it</code> : The labels of the resource in different languages, at least one language has to be provided</li>
 <li><code>comment_en</code>, <code>comment_de</code>, <code>comment_fr</code>, <code>comment_it</code>: optional comments in the respective language </li>
+<li><code>super</code> : The base class of the resource</li>
 </ul>
-<p>All other worksheets, one for each resource class, have the following form:
+<p>All other worksheets, one for each resource class, have the following structure:
 <img alt="img-resources-example-2.png" src="../assets/images/img-resources-example-2.png" />{ width=50% }</p>
 <p>The expected columns are:</p>
 <ul>
 <li><code>Property</code> : The name of the property</li>
 <li><code>Cardinality</code> : The cardinality, one of: <code>1</code>, <code>0-1</code>, <code>1-n</code>, <code>0-n</code></li>
 </ul>
-<p>For further information about resources, see <a href="../dsp-tools-create/#resources">here</a>.</p>
+<p>The GUI order is given by the order in which the properties are listed in the Excel sheet.</p>
+<p>For further information about resources, see <a href="../dsp-tools-create-ontologies/#resources">here</a>.</p>
 <h2 id="create-the-properties-for-a-data-model-from-an-excel-file">Create the properties for a data model from an Excel file</h2>
-<p>With dsp-tools the <code>properties</code> section used in a data model (JSON) can be created from an Excel file. Only the first
-worksheet of the Excel file is considered and only XLSX files are allowed. The <code>properties</code> section can be inserted into
-the ontology file and then be uploaded onto a DSP server.</p>
-<p><strong>An Excel file template can be found <a href="../assets/templates/properties_template.xlsx">here</a>. It is recommended to work from the template.</strong></p>
-<p>The Excel sheet must have the following format:
+<p>With dsp-tools, the <code>properties</code> section used in a data model (JSON) can be created from an Excel file. Only the first 
+worksheet of the Excel file is considered and only XLSX files are allowed. The <code>properties</code> section can be inserted 
+into the ontology file and then be uploaded onto a DSP server.</p>
+<p><strong>An Excel file template can be found <a href="../assets/templates/properties_template.xlsx">here</a>. It is recommended to work 
+from the template.</strong></p>
+<p>The Excel sheet must have the following structure:
 <img alt="img-properties-example.png" src="../assets/images/img-properties-example.png" /></p>
 <p>The expected columns are:</p>
 <ul>
 <li><code>name</code> : The name of the property</li>
 <li><code>super</code> : The base property of the property</li>
-<li><code>object</code> : The resource the property refers to if it is a link property (property derived from <code>hasLinkTo</code>)</li>
+<li><code>object</code> : If the property is derived from <code>hasValue</code>, the type of the property must be further specified by the 
+object it takes, e.g. <code>TextValue</code>, <code>ListValue</code>, or <code>IntValue</code>. If the property is derived from <code>hasLinkTo</code>, 
+the <code>object</code> specifies the resource class that this property refers to.</li>
 <li><code>en</code>, <code>de</code>, <code>fr</code>, <code>it</code> : The labels of the property in different languages, at least one language has to be provided</li>
 <li><code>comment_en</code>, <code>comment_de</code>, <code>comment_fr</code>, <code>comment_it</code>: optional comments in the respective language </li>
 <li><code>gui_element</code> : The GUI element for the property</li>
-<li><code>hlist</code> : In case of list values the according list</li>
+<li><code>hlist</code> : In case of list values: the name of the list</li>
 </ul>
-<p>For further information about properties, see <a href="../dsp-tools-create/#properties">here</a>.</p>
+<p>For further information about properties, see <a href="../dsp-tools-create-ontologies/#properties">here</a>.</p>
 <h2 id="create-a-dsp-conform-xml-file-from-an-excel-file">Create a DSP-conform XML file from an Excel file</h2>
 <p>[not yet implemented]</p>
 <h2 id="create-a-list-from-one-or-several-excel-files">Create a list from one or several Excel files</h2>
-<p>With dsp-tools a JSON list can be created from one or several Excel files. The list can then be inserted into a JSON
-ontology and uploaded to a DSP server. The expected format of the Excel files is
-described <a href="../dsp-tools-create/#lists-from-excel">here</a>. It is possible to create multilingual lists. In this case, a
-separate Excel file has to be created for each language. The data has to be in the first worksheet of the Excel file(s).
-It is important that all the Excel lists have the same structure. So, the translation(s) of a label in one Excel sheet
-has to be in the exact same cell (i.e. with the same cell index) in its own Excel sheet.</p>
-<p>Only Excel files with file extension <code>.xlsx</code> are considered. All Excel files have to be located in the same directory.
-When calling the <code>excel</code> command, this folder is provided as an argument to the call. The language of the labels has to
-be provided in the Excel file's file name after an underline and before the file extension, p.ex. <code>liste_de.xlsx</code> would
-be considered a list with German (<code>de</code>) labels, <code>list_en.xlsx</code> a list with English (<code>en</code>) labels. The language has to be
-a valid ISO 639-1 or ISO 639-2 language code.</p>
-<p>The following example shows how to create a JSON list from two Excel files which are in a directory called <code>lists</code>. The
-output is written to the file <code>list.json</code>.</p>
+<p>With dsp-tools a JSON list can be created from one or several Excel files. The list can then be inserted into a JSON 
+ontology and uploaded to a DSP server. The expected structure of the Excel files is described 
+<a href="../dsp-tools-create/#lists-from-excel">here</a>. It is possible to create multilingual lists. In this case, a separate 
+Excel file has to be created for each language. The data has to be in the first worksheet of the Excel file(s). 
+It is important that all the Excel lists have the same structure. So, the translation(s) of a label in one Excel 
+sheet has to be in the exact same cell (i.e. with the same cell index) in its own Excel sheet.</p>
+<p>Only Excel files with file extension <code>.xlsx</code> are considered. All Excel files have to be located in the same directory. 
+When calling the <code>excel</code> command, this folder is provided as an argument to the call. The language of the labels has 
+to be provided in the Excel file's file name after an underline and before the file extension, p.ex. <code>liste_de.xlsx</code> 
+would be considered a list with German (<code>de</code>) labels, <code>list_en.xlsx</code> a list with English (<code>en</code>) labels. The language 
+has to be a valid ISO 639-1 or ISO 639-2 language code.</p>
+<p>The following example shows how to create a JSON list from two Excel files which are in a directory called <code>lists</code>. 
+The output is written to the file <code>list.json</code>.</p>
 <pre><code class="language-bash">dsp-tools excel lists list.json
 </code></pre>
-<p>The two Excel files <code>liste_de.xlsx</code> and <code>list_en.xlsx</code> are located in a folder called <code>lists</code>. <code>liste_de.xlsx</code> contains
-German labels for the list, <code>list_en.xlsx</code> contains the English labels.</p>
+<p>The two Excel files <code>liste_de.xlsx</code> and <code>list_en.xlsx</code> are located in a folder called <code>lists</code>. <code>liste_de.xlsx</code> 
+contains German labels for the list, <code>list_en.xlsx</code> contains the English labels.</p>
 <pre><code>lists
     |__ liste_de.xlsx
     |__ list_en.xlsx
 </code></pre>
-<p>For each list node, the <code>label</code>s are read from the Excel files. The language code, provided in the file name, is then
-used for the labels. As node <code>name</code>, a simplified version of the English label is taken if English is one of the
-available languages. If English is not available, one of the other languages is chosen (which one depends on the
+<p>For each list node, the <code>label</code>s are read from the Excel files. The language code, provided in the file name, is then 
+used for the labels. As node <code>name</code>, a simplified version of the English label is taken if English is one of the 
+available languages. If English is not available, one of the other languages is chosen (which one depends on the 
 representation of the file order). If there are two node names with the same name, an incrementing number is appended to
 the <code>name</code>.</p>
 <pre><code class="language-JSON">{
@@ -3273,9 +3279,9 @@ the <code>name</code>.</p>
       }
     }
   ]
-}, ...
+}
 </code></pre>
-<p>After the creation of the list, a validation against the JSON schema for lists is performed. An error message ist
+<p>After the creation of the list, a validation against the JSON schema for lists is performed. An error message is 
 printed out if the list is not valid. Furthermore, it is checked that no two nodes are the same.</p>
 
   <hr>

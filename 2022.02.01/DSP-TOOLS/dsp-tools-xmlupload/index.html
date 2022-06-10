@@ -3983,6 +3983,9 @@ The available system groups are:</p>
 <li><code>id</code>: a unique, arbitrary string providing a unique ID to the resource in order to be referencable by other resources;
   the ID is only used during the import process and later replaced by the IRI used internally by DSP (required)</li>
 <li><code>permissions</code>: a reference to a permission set; the permissions will be applied to the created resource (optional)</li>
+<li><code>iri</code>: a custom IRI used when migrating existing resources (optional)</li>
+<li><code>ark</code>: a version 0 ARK used when migrating existing resources from salsah.org to DSP (optional), it is not possible to
+use <code>iri</code> and <code>ark</code> in the same resource. When <code>ark</code> is used, it overrides <code>iri</code>.</li>
 </ul>
 <p>A complete <code>&lt;resource&gt;</code> element may look as follows:</p>
 <pre><code class="language-xml">&lt;resource label=&quot;EURUS015a&quot;

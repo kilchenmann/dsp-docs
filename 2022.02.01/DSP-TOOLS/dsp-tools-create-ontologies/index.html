@@ -2844,6 +2844,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    Super
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#subject" class="md-nav__link">
     Subject
   </a>
@@ -2943,21 +2957,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#linkvalue" class="md-nav__link">
-    LinkValue
+  <a href="#haslinkto-property" class="md-nav__link">
+    hasLinkTo Property
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ispartof-property" class="md-nav__link">
+    IsPartOf Property
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#super" class="md-nav__link">
-    Super
-  </a>
   
 </li>
         
@@ -3003,7 +3017,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
+  <a href="#comments_1" class="md-nav__link">
     Comments
   </a>
   
@@ -3402,6 +3416,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    Super
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#subject" class="md-nav__link">
     Subject
   </a>
@@ -3501,21 +3529,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#linkvalue" class="md-nav__link">
-    LinkValue
+  <a href="#haslinkto-property" class="md-nav__link">
+    hasLinkTo Property
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ispartof-property" class="md-nav__link">
+    IsPartOf Property
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#super" class="md-nav__link">
-    Super
-  </a>
   
 </li>
         
@@ -3561,7 +3589,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
+  <a href="#comments_1" class="md-nav__link">
     Comments
   </a>
   
@@ -3658,7 +3686,10 @@ certain data type. It is not possible to create a custom data type.</p>
 </ul>
 <p>The following fields are optional:</p>
 <ul>
+<li><code>comments</code> (but if omitted a default value <code>[no comment provided]</code>) is used</li>
+<li><code>super</code> (with the exception of <code>LinkValue</code> where <code>super</code> is mandatory)</li>
 <li><code>subject</code></li>
+<li><code>gui_attributes</code></li>
 </ul>
 <p>A detailed description of <code>properties</code> can be found <a href="#properties-object-in-detail">below</a>.</p>
 <h3 id="resources">Resources</h3>
@@ -3677,7 +3708,7 @@ has to be provided.</p>
 </ul>
 <p>The following field is optional:</p>
 <ul>
-<li><code>comments</code></li>
+<li><code>comments</code> (but if omitted a default value <code>[no comment provided]</code>) is used</li>
 </ul>
 <p>A detailed description of <code>resources</code> can be found <a href="#properties-object-in-detail">below</a>.</p>
 <h2 id="properties-object-in-detail">Properties Object in Detail</h2>
@@ -3695,6 +3726,78 @@ but <code>-</code> and <code>_</code> are allowed (although not as first charact
 <p><code>"labels": {"&lt;language&gt;": "&lt;string&gt;", ...}</code></p>
 <p>Collection of <code>labels</code> for the property as strings with language tag (currently "en", "de", "fr"
 and "it" are supported).</p>
+<h3 id="comments">Comments</h3>
+<p>(optional)</p>
+<p><code>"comments": { "&lt;lang&gt;": "&lt;comment&gt;", "&lt;lang&gt;": "&lt;comment&gt;", ... }</code></p>
+<p>Comments with language tags. Currently, "de", "en", "fr" and "it" are supported. The <code>comments</code> element is mandatory but
+can be omitted. In that case the default value <code>[no comment provided]</code> (with language "en") is used.</p>
+<h3 id="super">Super</h3>
+<p>(optional)</p>
+<p><code>"super": ["&lt;super-property&gt;", "&lt;super-property&gt;, ...]</code></p>
+<p>A property has to be derived from at least one base property. The most generic base property that the DSP offers is
+<em>hasValue</em>. In addition, the property may be a sub-property of properties defined in external or other ontologies.
+External ontologies like <code>dcterms</code> or <code>foaf</code> must be defined in the "prefix" section. In this case the qualified name -
+including the prefix of the external or internal ontology - has to be given.</p>
+<p>The following base properties are defined by DSP:</p>
+<ul>
+<li><code>hasValue</code>: This is the most generic base and taken as default if <code>super</code> is omitted.</li>
+<li><code>hasLinkTo</code>: This value represents a link to another resource. You have to indicate the "<em>object</em>" as a prefixed name
+  that identifies the resource class this link points to (a ":" prepended to the name is sufficient if the resource is
+  defined in the current ontology).</li>
+<li><code>hasColor</code>: Defines a color value (<em>ColorValue</em>)</li>
+<li><code>hasComment</code>: Defines a "standard" comment</li>
+<li><code>hasGeometry</code>: Defines a geometry value (a JSON describing a polygon, circle or rectangle), see <em>ColorValue</em></li>
+<li><code>isPartOf</code>: A special variant of <em>hasLinkTo</em>. It says that an instance of the given resource class is an integral part
+  of another resource class. E.g. a "page" is part of a "book".</li>
+<li><code>isRegionOf</code>: A special variant of <em>hasLinkTo</em>. It means that the given resource class is a "region" of another
+  resource class. This is typically used to describe regions of interest in images.</li>
+<li><code>isAnnotationOf</code>: A special variant of <em>hasLinkTo</em>. It denotes the given resource class as an annotation to another
+  resource class.</li>
+<li><code>seqnum</code>: An integer that is used to define a sequence number in an ordered set of instances, e.g. the ordering of the
+  pages in a book (independent of the page naming) in combination with a property derived from <code>isPartOf</code>.</li>
+</ul>
+<p>Example of a <code>properties</code> object:</p>
+<pre><code class="language-json">{
+  &quot;properties&quot;: [
+    {
+      &quot;name&quot;: &quot;id&quot;,
+      &quot;subject&quot;: &quot;:School&quot;,
+      &quot;object&quot;: &quot;TextValue&quot;,
+      &quot;super&quot;: [
+          &quot;hasValue&quot;
+      ],
+      &quot;labels&quot;: {
+        &quot;en&quot;: &quot;School ID&quot;,
+        &quot;de&quot;: &quot;ID der Schule&quot;
+        &quot;fr&quot;: &quot;ID de l'école&quot;
+      },
+      &quot;gui_element&quot;: &quot;SimpleText&quot;,
+      &quot;gui_attributes&quot;: {
+        &quot;size&quot;: 32,
+        &quot;maxlength&quot;: 128
+      }
+    },
+    {
+      &quot;name&quot;: &quot;name&quot;,
+      &quot;subject&quot;: &quot;:School&quot;,
+      &quot;object&quot;: &quot;TextValue&quot;,
+      &quot;super&quot;: [
+          &quot;hasValue&quot;
+      ],
+      &quot;labels&quot;: {
+        &quot;en&quot;: &quot;Name of the school&quot;,
+        &quot;de&quot;: &quot;Name der Schule&quot;,
+        &quot;fr&quot;: &quot;Nom de l'école&quot;
+      },
+      &quot;gui_element&quot;: &quot;SimpleText&quot;,
+      &quot;gui_attributes&quot;: {
+        &quot;size&quot;: 32,
+        &quot;maxlength&quot;: 128
+      }
+    }
+  ]
+}
+</code></pre>
 <h3 id="subject">Subject</h3>
 <p>(optional)</p>
 <p><code>"subject": "&lt;resource-class&gt;"</code></p>
@@ -3707,7 +3810,8 @@ resource class (see <a href="#referencing-ontologies">below</a> on how prefixed 
 <li><code>gui_attributes</code>: optional</li>
 </ul>
 <p><code>"object": "&lt;data-type&gt;"</code></p>
-<p>The <code>object</code> defines the data type of the value that the property will store. <code>gui_element</code> and <code>gui_attributes</code> depend on the data type. The following data types are allowed:</p>
+<p>The <code>object</code> defines the data type of the value that the property will store. <code>gui_element</code> and <code>gui_attributes</code> depend 
+on the data type. The following data types are allowed:</p>
 <ul>
 <li><code>TextValue</code></li>
 <li><code>ColorValue</code></li>
@@ -3721,7 +3825,7 @@ resource class (see <a href="#referencing-ontologies">below</a> on how prefixed 
 <li><code>UriValue</code></li>
 <li><code>IntervalValue</code></li>
 <li><code>ListValue</code></li>
-<li><code>LinkValue</code></li>
+<li>any previously defined resource class in case of a link property</li>
 </ul>
 <h4 id="textvalue">TextValue</h4>
 <p><code>"object": "TextValue"</code></p>
@@ -4079,7 +4183,7 @@ or moving images.</p>
 <ul>
 <li><code>Radio</code>: A GUI element for <em>ListValue</em>. A set of radio buttons. This works only with flat lists.<ul>
 <li><em>gui_attributes</em>:<ul>
-<li><code>hlist=&lt;list-name&gt;</code> (required): The reference of a <a href="#lists">list</a> root node</li>
+<li><code>hlist=&lt;list-name&gt;</code> (required): The reference of a <a href="../dsp-tools-create/#lists">list</a> root node</li>
 </ul>
 </li>
 </ul>
@@ -4087,7 +4191,7 @@ or moving images.</p>
 <li><code>List</code>: A GUI element for <em>ListValue</em>. A list of values to select one from. This GUI element should be chosen for
   hierarchical lists or flat lists that could be expanded to hierarchical lists in the future.<ul>
 <li><em>gui_attributes</em>:<ul>
-<li><code>hlist=&lt;list-name&gt;</code> (required): The reference of a <a href="#lists">list</a> root node</li>
+<li><code>hlist=&lt;list-name&gt;</code> (required): The reference of a <a href="../dsp-tools-create/#lists">list</a> root node</li>
 </ul>
 </li>
 </ul>
@@ -4109,20 +4213,20 @@ or moving images.</p>
   }
 }
 </code></pre>
-<h4 id="linkvalue">LinkValue</h4>
+<h4 id="haslinkto-property">hasLinkTo Property</h4>
 <p><code>"object": ":&lt;resource-name&gt;"</code></p>
-<p>LinkValues do not follow the pattern of the previous data types, because they do not connect to a final value but to
-another resource which has to be defined. Thus, the "object" denominates the resource class the link will point to. If
+<p>Link properties do not follow the pattern of the previous data types, because they do not connect to a final value but 
+to another (existing) resource. Thus, the "object" denominates the resource class the link will point to. If
 the resource is defined in the same ontology, the name has to be prepended by a ":", if the resource is defined in
-another (previously defined)
-ontology, the ontology name has to be prepended separated by a colon ":", e.g.
-"other-onto:MyResource". The "super"-element has to be "hasLinkTo" or at least derived from "hasLinkTo" (how to derive a
-resource or property from another one is not part of this documentation).</p>
+another (previously defined) ontology, the ontology name has to be prepended separated by a colon ":", e.g.
+"other-onto:MyResource". When defining a link property, its "super" element has to be "hasLinkTo" or "isPartOf" or 
+derived from "hasLinkTo" or "isPartOf". "isPartOf" is a special type of linked resources, for more information see 
+<a href="#ispartof-property">below</a>.</p>
 <p><em>gui-elements/gui_attributes</em>:</p>
 <ul>
-<li><code>Searchbox</code>: Has to be used with <em>hasLinkTo</em> property. Allows searching resources by entering a resource that the given resource
-  should link to. It has one gui_attribute that indicates how many properties of the found resources should be
-  indicated. This is mandatory.<ul>
+<li><code>Searchbox</code>: Has to be used with <em>hasLinkTo</em> property. Allows searching resources by entering a resource that the 
+  given resource should link to. It has one gui_attribute that indicates how many properties of the found resources 
+  should be indicated. This is mandatory.<ul>
 <li><em>gui_attributes</em>:<ul>
 <li><code>numprops=integer</code> (optional): While dynamically displaying the search result, the number of properties that
   should be displayed.</li>
@@ -4142,73 +4246,33 @@ resource or property from another one is not part of this documentation).</p>
   &quot;gui_element&quot;: &quot;Searchbox&quot;
 }
 </code></pre>
-<p>Like already mentioned before: The following two fields are optional (can be omitted), with the notable exception of
-the "super"
-clause in case of LinkValues where the super clause is mandatory:</p>
-<h3 id="super">Super</h3>
-<p><code>"super": ["&lt;super-property&gt;", "&lt;super-property&gt;, ...]</code></p>
-<p>A property has to be derived from at least one base property. The most generic base property that the DSP offers is
-<em>hasValue</em>. In addition, the property may be a sub-property of properties defined in external or other ontologies.
-External ontologies like <code>dcterms</code> or <code>foaf</code> must be defined in the "prefix" section.</p>
-<p>In this case the qualified name - including the prefix of the external or internal ontology - has to be given.</p>
-<p>The following base properties are defined by DSP:</p>
-<ul>
-<li><code>hasValue</code>: This is the most generic base.</li>
-<li><code>hasLinkTo</code>: This value represents a link to another resource. You have to indicate the "<em>object</em>" as a prefixed name
-  that identifies the resource class this link points to (a ":" prepended to the name is sufficient if the resource is
-  defined in the current ontology).</li>
-<li><code>hasColor</code>: Defines a color value (<em>ColorValue</em>)</li>
-<li><code>hasComment</code>: Defines a "standard" comment</li>
-<li><code>hasGeometry</code>: Defines a geometry value (a JSON describing a polygon, circle or rectangle), see <em>ColorValue</em></li>
-<li><code>isPartOf</code>: A special variant of <em>hasLinkTo</em>. It says that an instance of the given resource class is an integral part
-  of another resource class. E.g. a "page" is part of a "book".</li>
-<li><code>isRegionOf</code>: A special variant of <em>hasLinkTo</em>. It means that the given resource class is a "region" of another
-  resource class. This is typically used to describe regions of interest in images.</li>
-<li><code>isAnnotationOf</code>: A special variant of <em>hasLinkTo</em>. It denotes the given resource class as an annotation to another
-  resource class.</li>
-<li><code>seqnum</code>: An integer that is used to define a sequence number in an ordered set of instances, e.g. the ordering of the
-  pages in a book (independent of the page naming)</li>
-</ul>
-<p>Example of a <code>properties</code> object:</p>
+<h4 id="ispartof-property">IsPartOf Property</h4>
+<p>A special case of linked resources is resources in a part-of / part-whole relation, i.e. resources that are composed of 
+other resources. A <code>isPartOf</code> property has to be added to the resource that is part of another resource. In case of 
+resources that are of type <code>StillImageRepresentation</code>, an additional property derived from <code>seqnum</code> with object <code>IntValue</code> 
+is required. When defined, a client is able to leaf through the parts of a compound object, p.ex. to leaf through pages of a book.</p>
+<p><em>Example:</em></p>
 <pre><code class="language-json">{
-  &quot;properties&quot;: [
-    {
-      &quot;name&quot;: &quot;id&quot;,
-      &quot;subject&quot;: &quot;:School&quot;,
-      &quot;object&quot;: &quot;TextValue&quot;,
-      &quot;super&quot;: [
-          &quot;hasValue&quot;
-      ],
-      &quot;labels&quot;: {
-        &quot;en&quot;: &quot;School ID&quot;,
-        &quot;de&quot;: &quot;ID der Schule&quot;
-        &quot;fr&quot;: &quot;ID de l'école&quot;
-      },
-      &quot;gui_element&quot;: &quot;SimpleText&quot;,
-      &quot;gui_attributes&quot;: {
-        &quot;size&quot;: 32,
-        &quot;maxlength&quot;: 128
-      }
-    },
-    {
-      &quot;name&quot;: &quot;name&quot;,
-      &quot;subject&quot;: &quot;:School&quot;,
-      &quot;object&quot;: &quot;TextValue&quot;,
-      &quot;super&quot;: [
-          &quot;hasValue&quot;
-      ],
-      &quot;labels&quot;: {
-        &quot;en&quot;: &quot;Name of the school&quot;,
-        &quot;de&quot;: &quot;Name der Schule&quot;,
-        &quot;fr&quot;: &quot;Nom de l'école&quot;
-      },
-      &quot;gui_element&quot;: &quot;SimpleText&quot;,
-      &quot;gui_attributes&quot;: {
-        &quot;size&quot;: 32,
-        &quot;maxlength&quot;: 128
-      }
-    }
-  ]
+  &quot;name&quot;: &quot;partOfBook&quot;,
+  &quot;super&quot;: [
+    &quot;isPartOf&quot;
+  ],
+  &quot;object&quot;: &quot;:Book&quot;,
+  &quot;labels&quot;: {
+      &quot;en&quot;: &quot;is part of&quot;
+  },
+  &quot;gui_element&quot;: &quot;Searchbox&quot;
+},
+{
+  &quot;name&quot;: &quot;hasPageNumber&quot;,
+  &quot;super&quot;: [
+    &quot;seqnum&quot;
+  ],
+  &quot;object&quot;: &quot;IntValue&quot;,
+  &quot;labels&quot;: {
+      &quot;en&quot;: &quot;has page number&quot;
+  },
+  &quot;gui_element&quot;: &quot;Spinbox&quot;
 }
 </code></pre>
 <h2 id="resources-object-in-detail">Resources Object in Detail</h2>
@@ -4279,10 +4343,11 @@ resource can have as well as how many times the relation is established.</p>
 </ul>
 </li>
 </ul>
-<h3 id="comments">Comments</h3>
+<h3 id="comments_1">Comments</h3>
 <p>(optional)</p>
 <p><code>"comments": { "&lt;lang&gt;": "&lt;comment&gt;", "&lt;lang&gt;": "&lt;comment&gt;", ... }</code></p>
-<p>Comments with language tags. The <code>comments</code> element is optional. Currently, "de", "en", "fr" and "it" are supported.</p>
+<p>Comments with language tags. Currently, "de", "en", "fr" and "it" are supported. The <code>comments</code> element is mandatory but 
+can be omitted. In that case the default value <code>[no comment provided]</code> (with language "en") is used.</p>
 <p>Example for a resource definition:</p>
 <pre><code class="language-json">{
   &quot;resources&quot;: [
